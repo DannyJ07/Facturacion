@@ -7,7 +7,7 @@ document.getElementById('factura-form').addEventListener('submit', function(even
     
     console.log({ cliente, producto, precio });  // Agrega un console.log para ver los datos enviados
 
-    fetch('http://127.0.0.1:5000/crear_factura', {
+    fetch('https://facturacion-2xof.onrender.com/crear_factura', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cliente, producto, precio })
@@ -21,13 +21,13 @@ document.getElementById('factura-form').addEventListener('submit', function(even
 
 
 function obtenerFacturas() {
-    fetch('http://127.0.0.1:5000/notificacion')
+    fetch('https://facturacion-2xof.onrender.com/notificacion')
     .then(response => response.json())
     .then(data => {
         console.log("Notificaciones:", data);
     });
 
-    fetch('http://127.0.0.1:5000/facturas')
+    fetch('https://facturacion-2xof.onrender.com/facturas')
     .then(response => response.json())
     .then(facturas => {
         console.log(facturas);  // Agrega un console.log para ver la respuesta
@@ -51,7 +51,7 @@ function obtenerFacturas() {
 }
 
 function pagarFactura(id) {
-    fetch(`http://127.0.0.1:5000/pagar_factura/${id}`, { method: 'POST' })
+    fetch(`https://facturacion-2xof.onrender.com/pagar_factura/${id}`, { method: 'POST' })
     .then(response => response.json())
     .then(data => {
         alert(data.mensaje);
